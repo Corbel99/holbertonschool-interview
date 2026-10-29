@@ -5,10 +5,7 @@ Module de résolution du problème de monnaie (making change).
 
 def makeChange(coins, total):
     """Calcule le nombre minimal de pièces nécessaires pour obtenir un total donné
-    en utilisant une approche gloutonne (greedy).
-
-    Note : L'approche gloutonne ne garantit pas toujours la solution optimale
-    pour tous les systèmes de monnaie, mais elle fonctionne pour les monnaies standard.
+    en utilisant la programmation dynamique.
 
     Args:
         coins (list of int): La liste des valeurs des pièces disponibles.
@@ -21,18 +18,14 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    coins.sort(reverse=True)
+    # Tableau pour stocker le nombre minimal de pièces pour chaque montant de 0 à total
+    # On initialise avec une valeur infini (représentée ici par total + 1)
+    dp = [float('inf')] * (total + 1)
+    dp[0] = 0
 
-    coin_count = 0
+    for i in range(1, total + 1):
+        for coin in coins:
+            if i - coin >= 0:
+                dp[i] = min(dp[i], dp[i - coin] + 1)
 
-    for coin in coins:
-        if total <= 0:
-            break
-
-        coin_count += total // coin
-        total = total % coin
-
-    if total != 0:
-        return -1
-
-    return coin_count
+    return dp[total] if dp[total] != float('inf') else -1
