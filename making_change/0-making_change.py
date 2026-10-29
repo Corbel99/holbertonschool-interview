@@ -3,23 +3,25 @@
 Module de résolution du problème de monnaie (making change).
 """
 
+
 def makeChange(coins, total):
-    """Calcule le nombre minimal de pièces nécessaires pour obtenir un total donné
-    en utilisant la programmation dynamique.
+    """Calcule le nombre minimal de pièces nécessaires
+    pour obtenir un total donné en utilisant
+    la programmation dynamique.
 
     Args:
-        coins (list of int): La liste des valeurs des pièces disponibles.
+        coins (list of int): La liste des valeurs des pièces.
         total (int): Le montant total à atteindre.
 
     Returns:
-        int: Le nombre minimal de pièces nécessaires, ou -1 s'il est impossible
-             d'atteindre le total, ou 0 si le total est inférieur ou égal à 0.
+        int: Le nombre minimal de pièces, ou -1 si
+             impossible, ou 0 si le total <= 0.
     """
     if total <= 0:
         return 0
 
-    # Tableau pour stocker le nombre minimal de pièces pour chaque montant de 0 à total
-    # On initialise avec une valeur infini (représentée ici par total + 1)
+    # Tableau pour stocker le nombre minimal de pièces
+    # On initialise avec une valeur infini
     dp = [float('inf')] * (total + 1)
     dp[0] = 0
 
