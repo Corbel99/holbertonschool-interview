@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Module de résolution du problème de monnaie (making change).
+"""
 
 def makeChange(coins, total):
     """Calcule le nombre minimal de pièces nécessaires pour obtenir un total donné
