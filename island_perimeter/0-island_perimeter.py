@@ -1,7 +1,17 @@
 #!/usr/bin/python3
+"""Module that computes the perimeter of an island described in a grid."""
+
 
 def island_perimeter(grid):
+    """Return the perimeter of the island described in grid.
 
+    Args:
+        grid (list of list of int): 0 represents water, 1 represents land.
+            Each cell is a square of side 1.
+
+    Returns:
+        int: the perimeter of the island (0 if there is no island).
+    """
     perimeter = 0
     rows = len(grid)
     if rows > 0:
